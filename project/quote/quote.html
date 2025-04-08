@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="quote.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="quoteBox">
+      <h2>Quote Of The Day</h2>
+      <blockquote class="quote">Quote</blockquote>
+      <span class="author">Name</span>
+      <div class="btnContainer">
+        <button class="nextQuote" onclick="getQuote(apiUrl)">Next Quote</button>
+        <button class="tweet" onclick="tweet()">Tweet</button>
+      </div>
+    </div>
+    <script>
+      const apiUrl = "https://qapi.vercel.app/api/random";
+      const quote = document.querySelector(".quote");
+      const author = document.querySelector(".author");
+
+      async function getQuote() {
+        const response = await fetch(apiUrl);
+        let data = await response.json();
+
+        quote.innerHTML = data.quote;
+        author.innerHTML = data.author;
+      }
+      getQuote(apiUrl);
+
+      function tweet() {
+        window.open("https://twitter.com/intent/tweet?text=" + quote.innerHTML + "By" + author.innerHTML, +"Tweet Window", "width =1000 , height=350");
+      }
+    </script>
+  </body>
+</html>
