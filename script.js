@@ -14,10 +14,10 @@ showItems(currentItem);
 
 loadMoreBtn.onclick = () => {
   if (currentItem >= boxes.length) {
-    // Kalau semua project sudah muncul dan tombol Show Less diklik
+    
     currentItem = 3;
   } else {
-    // Tambah 3 project
+   
     currentItem += 3;
     if (currentItem > boxes.length) currentItem = boxes.length;
   }
@@ -26,7 +26,7 @@ loadMoreBtn.onclick = () => {
   showItems(currentItem);
 };
 
-// Jaga-jaga kalau kembali dari TryOn, tetap tunjukkan jumlah project terakhir
+
 window.addEventListener("pageshow", function (event) {
   currentItem = parseInt(localStorage.getItem("shownItems")) || 3;
   showItems(currentItem);
